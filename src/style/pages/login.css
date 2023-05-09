@@ -1,0 +1,70 @@
+.login-section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-image: linear-gradient(to bottom right, #2f2f2f, #18202e);
+}
+.left-side {
+  background-color: #18202e;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  padding: 80px 50px;
+  color: white;
+  margin: auto;
+  margin-top: 10%;
+  max-width: 500px;
+}
+.left-side a {
+  text-decoration: none;
+  color: #ff3100;
+}
+.left-side p {
+  font-size: 13px;
+}
+.left-side h4 {
+  font-size: 1.5rem;
+}
+.p-tag {
+  color: #7c7c7c;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  font-size: 13px;
+}
+.login-input {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border: #ff3100 solid 2px;
+  border-radius: 6px;
+  height: 40px;
+  background-color: #535353;
+  color: white;
+  font-size: 13px;
+  outline: none;
+}
+.terms {
+  display: inline-block;
+  margin-bottom: 7%;
+  font-size: 13px;
+}
+.left-side button {
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  background-color: #ff3100;
+  color: white;
+  height: 40px;
+}
+.forget-password {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.forget-password a {
+  color: #e3e3e3;
+}
+.center {
+  text-align: center;
+}

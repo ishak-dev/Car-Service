@@ -1,0 +1,13 @@
+.appointment-card {
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px;
+  margin-right: auto;
+}
+.appointment-card h3 {
+  font-size: 25px;
+  font-weight: bold;
+}

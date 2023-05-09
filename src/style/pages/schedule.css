@@ -1,0 +1,52 @@
+.schedule-section {
+  width: 75%;
+  margin: 50px auto;
+}
+
+.create-new-appointment-btn {
+  font-size: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+  height: 50px;
+  border-radius: 6px;
+  background-color: #ff3100;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 10px;
+}
+.card-colors {
+  display: flex;
+}
+.card-colors li {
+  margin: 10px;
+  list-style-type: "◉";
+}
+.card-colors li::marker {
+  margin: 0px;
+  font-size: 25px;
+}
+.card-colors li:nth-child(1)::marker {
+  color: #ff5100;
+}
+.card-colors li:nth-child(2)::marker {
+  color: #ff8800;
+}
+.card-colors li:nth-child(3)::marker {
+  color: #ffc06d;
+}
+
+.dark-orange {
+  background-color: #ff5100;
+}
+.medium-orange {
+  background-color: #ff8800;
+}
+.light-orange {
+  background-color: #ffc06d;
+}
+
+.appointment-cards {
+  display: flex;
+  flex-wrap: wrap;
+}

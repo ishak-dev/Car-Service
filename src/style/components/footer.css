@@ -1,0 +1,18 @@
+footer {
+  width: 75%;
+  margin: auto;
+  margin-top: 150px;
+}
+footer h5 {
+  color: #ff3100;
+}
+footer .nav-link {
+  color: #5a79b0 !important;
+}
+footer button {
+  background-color: #ff3100 !important;
+  border-color: #18202e !important;
+}
+footer p {
+  color: #5a79b0;
+}

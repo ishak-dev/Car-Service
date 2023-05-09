@@ -1,0 +1,22 @@
+.home-section {
+  width: 75%;
+  margin: auto;
+}
+.home-section h2 {
+  font-weight: bold;
+  margin: 50px 0px 10px 7px;
+}
+.last-added {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.schedule-container {
+  background-color: #fff;
+  padding: 5px 10px;
+}
+
+.special-deals-container {
+  display: flex;
+  flex-wrap: wrap;
+}
