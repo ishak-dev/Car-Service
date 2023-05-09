@@ -80,3 +80,8 @@
   width: fit-content;
   cursor: pointer;
 }
+.remove-float {
+  float: unset;
+  margin: 0%;
+  margin-left: 20px;
+}

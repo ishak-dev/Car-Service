@@ -1,0 +1,15 @@
+.carServiceHistory-section {
+  width: 75%;
+  margin: 50px auto;
+}
+.carServiceHistory-section h2 {
+  margin-bottom: 20px;
+  width: fit-content;
+}
+.add-new-history-btn {
+  font-size: 18px;
+}
+.carservicehistory-notes {
+  display: flex;
+  flex-wrap: wrap;
+}

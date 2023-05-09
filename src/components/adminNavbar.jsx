@@ -4,7 +4,7 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const AdminNavbar = () => {
   return (
     <div className="navbar">
       <ul>
@@ -15,28 +15,26 @@ const Navbar = () => {
           <Link to="/Car-Service/dashboard">Dashboard</Link>
         </li>
         <li>
-          <Link to="/Car-Service/orders">Orders</Link>
+          <Link to="/Car-Service/orders">User Orders</Link>
         </li>
         <li>
-          <Link to="/Car-Service/shop">Shop</Link>
+          <Link to="/Car-Service/shop">Add Articles</Link>
         </li>
         <li>
           <Link to="/Car-Service/schedule">Schedule</Link>
         </li>
         <li>
-          <Link to="/Car-Service/cart">
-            Cart <BsFillCartCheckFill />
-          </Link>
+          <Link to="/Car-Service/carshistory">My Cars</Link>
         </li>
-        <li>
+        {/* <li>
           <div className="search-input">
             <input placeholder="Search for parts..." />
-            <button className="search-btn">Search</button>
+            <button className="search-btn">Search by ID</button>
           </div>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
 };
 
-export default Navbar;
+export default AdminNavbar;

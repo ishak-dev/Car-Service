@@ -12,19 +12,29 @@ import Orders from "./pages/orders";
 import Cart from "./pages/cart";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import AdminNavbar from "./components/adminNavbar";
+import CarServiceHistory from "./pages/carServiceHistory";
 
 function App() {
+  const [user, setUser] = useState("admin");
+
   return (
     <div className="App">
-      <Navbar />
+      {user == "admin" ? <AdminNavbar /> : <Navbar />}
+
       <Routes>
-        <Route path="/dashboard" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/Car-Service" element={<Home />} />
+        <Route path="/Car-Service/dashboard" element={<Home />} />
+        <Route path="/Car-Service/shop" element={<Shop user={user} />} />
+        <Route path="/Car-Service/schedule" element={<Schedule />} />
+        <Route path="/Car-Service/orders" element={<Orders user={user} />} />
+        <Route path="/Car-Service/cart" element={<Cart />} />
+        <Route path="/Car-Service/login" element={<Login />} />
+        <Route path="/Car-Service/register" element={<Register />} />
+        <Route
+          path="/Car-Service/carshistory"
+          element={<CarServiceHistory />}
+        />
       </Routes>
       <Footer />
     </div>
