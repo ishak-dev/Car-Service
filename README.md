@@ -1,5 +1,5 @@
 # Welcome to Car Service App!
-## Application Link: [Application is deployed by using netifly (Click Here )](http://dev.nodeca.com)
+## Application Link: [Application is deployed by using netifly (Click Here )](https://car-service-ibu.netlify.app)
 
 __Releases:__
 ```
