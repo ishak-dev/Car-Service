@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/navbar.css";
-import { BsFillCartCheckFill } from "react-icons/bs";
+
 import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
