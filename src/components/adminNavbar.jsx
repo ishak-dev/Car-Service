@@ -12,19 +12,19 @@ const AdminNavbar = () => {
           <img src={logo} alt="logo" />
         </li>
         <li>
-          <Link to="/Car-Service/dashboard">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
-          <Link to="/Car-Service/orders">User Orders</Link>
+          <Link to="/orders">User Orders</Link>
         </li>
         <li>
-          <Link to="/Car-Service/shop">Add Articles</Link>
+          <Link to="/shop">Add Articles</Link>
         </li>
         <li>
-          <Link to="/Car-Service/schedule">Schedule</Link>
+          <Link to="/schedule">Schedule</Link>
         </li>
         <li>
-          <Link to="/Car-Service/carshistory">My Cars</Link>
+          <Link to="/carshistory">My Cars</Link>
         </li>
         {/* <li>
           <div className="search-input">

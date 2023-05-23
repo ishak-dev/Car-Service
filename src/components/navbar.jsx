@@ -12,19 +12,19 @@ const Navbar = () => {
           <img src={logo} alt="logo" />
         </li>
         <li>
-          <Link to="/Car-Service/dashboard">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
         <li>
-          <Link to="/Car-Service/orders">Orders</Link>
+          <Link to="/orders">Orders</Link>
         </li>
         <li>
-          <Link to="/Car-Service/shop">Shop</Link>
+          <Link to="/shop">Shop</Link>
         </li>
         <li>
-          <Link to="/Car-Service/schedule">Schedule</Link>
+          <Link to="/schedule">Schedule</Link>
         </li>
         <li>
-          <Link to="/Car-Service/cart">Cart</Link>
+          <Link to="/cart">Cart</Link>
         </li>
         <li>
           <div className="search-input">
