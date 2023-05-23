@@ -23,18 +23,15 @@ function App() {
       {user == "admin" ? <AdminNavbar /> : <Navbar />}
 
       <Routes>
-        <Route path="/Car-Service" element={<Home />} />
-        <Route path="/Car-Service/dashboard" element={<Home />} />
-        <Route path="/Car-Service/shop" element={<Shop user={user} />} />
-        <Route path="/Car-Service/schedule" element={<Schedule />} />
-        <Route path="/Car-Service/orders" element={<Orders user={user} />} />
-        <Route path="/Car-Service/cart" element={<Cart />} />
-        <Route path="/Car-Service/login" element={<Login />} />
-        <Route path="/Car-Service/register" element={<Register />} />
-        <Route
-          path="/Car-Service/carshistory"
-          element={<CarServiceHistory />}
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Home />} />
+        <Route path="/shop" element={<Shop user={user} />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/orders" element={<Orders user={user} />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/carshistory" element={<CarServiceHistory />} />
       </Routes>
       <Footer />
     </div>
