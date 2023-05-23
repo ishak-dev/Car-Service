@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/navbar.css";
-import { BsFillCartCheckFill } from "react-icons/bs";
+
 import logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
@@ -24,9 +24,7 @@ const Navbar = () => {
           <Link to="/Car-Service/schedule">Schedule</Link>
         </li>
         <li>
-          <Link to="/Car-Service/cart">
-            Cart <BsFillCartCheckFill />
-          </Link>
+          <Link to="/Car-Service/cart">Cart</Link>
         </li>
         <li>
           <div className="search-input">

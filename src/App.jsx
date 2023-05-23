@@ -16,7 +16,7 @@ import AdminNavbar from "./components/adminNavbar";
 import CarServiceHistory from "./pages/carServiceHistory";
 
 function App() {
-  const [user, setUser] = useState("admin");
+  const [user, setUser] = useState("user");
 
   return (
     <div className="App">
