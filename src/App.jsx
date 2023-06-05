@@ -14,9 +14,11 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import AdminNavbar from "./components/adminNavbar";
 import CarServiceHistory from "./pages/carServiceHistory";
+import AdminDashboard from "./pages/adminDashboard";
+import AdminArticles from "./pages/adminArticles";
 
 function App() {
-  const [user, setUser] = useState("user");
+  const [user, setUser] = useState("admin");
 
   return (
     <div className="App">
@@ -32,6 +34,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/carshistory" element={<CarServiceHistory />} />
+        <Route path="/adminArticles" element={<AdminArticles />} />
+        <Route path="/adminDashboard" element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </div>
