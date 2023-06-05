@@ -1,6 +1,15 @@
 import React from "react";
 import "../../style/components/cart/cartItem.css";
-const CartItem = () => {
+
+const CartItem = ({
+  img,
+  name,
+  description,
+  price,
+  setArticleDeleted,
+  quantity,
+  setQuantity,
+}) => {
   return (
     <tbody>
       <tr>
@@ -11,22 +20,40 @@ const CartItem = () => {
             alt="..."
           />
           <div className="item-cart-description">
-            <h4>Very good engine</h4>
-            <p>Some description about this item</p>
+            <h4>{name}</h4>
+            <p>{description}</p>
           </div>
         </td>
 
         <td>
           <div className="item-quantity">
-            <p>+</p>
-            <p>2</p>
-            <p>-</p>
+            <p
+              onClick={() => {
+                setQuantity((prevState) => prevState + 1);
+              }}
+            >
+              +
+            </p>
+            <p>{quantity}</p>
+            <p
+              onClick={() => {
+                setQuantity((prevState) => prevState - 1);
+              }}
+            >
+              -
+            </p>
           </div>
         </td>
         <td className="remove-item">
-          <p>x</p>
+          <p
+            onClick={() => {
+              localStorage.removeItem("itemId"), setArticleDeleted(true);
+            }}
+          >
+            x
+          </p>
         </td>
-        <td className="item-price">55 $</td>
+        <td className="item-price">{price} $</td>
       </tr>
     </tbody>
   );

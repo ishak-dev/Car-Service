@@ -1,6 +1,6 @@
 import React from "react";
 import "../../style/components/carServiceHistory/carService.css";
-const CarService = () => {
+const CarService = ({ date, vehicleId, serviceTypeId }) => {
   return (
     <div className="carservice-container">
       <h3>3123142151</h3>

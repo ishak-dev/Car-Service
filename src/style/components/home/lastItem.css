@@ -53,5 +53,6 @@
 
 .card-price {
   font-weight: bold;
+  width: fit-content;
   color: #ff3100;
 }

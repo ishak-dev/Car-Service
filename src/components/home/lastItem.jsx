@@ -11,7 +11,7 @@ import img9 from "../../img/img9.jpg";
 import motor from "../../img/motor.png";
 import "../../style/components/home/lastItem.css";
 
-const LastItem = () => {
+const LastItem = ({ name, price }) => {
   return (
     <div className="card list-card">
       <div className="img-container">
@@ -22,13 +22,13 @@ const LastItem = () => {
         />
       </div>
       <div className="card-body">
-        <h5 className="card-title">Kavasaki brakes</h5>
+        <h5 className="card-title">{name}</h5>
         <div className="row">
           <div className="col-10">
             <p className="card-type">Brake Shoes</p>
           </div>
           <div className="col-2">
-            <p className="card-price">300$</p>
+            <p className="card-price">{price}$</p>
           </div>
         </div>
       </div>
