@@ -6,7 +6,7 @@ const CartItem = ({
   name,
   description,
   price,
-  setArticleDeleted,
+  setCounter,
   quantity,
   setQuantity,
 }) => {
@@ -47,7 +47,8 @@ const CartItem = ({
         <td className="remove-item">
           <p
             onClick={() => {
-              localStorage.removeItem("itemId"), setArticleDeleted(true);
+              localStorage.removeItem("itemId"),
+                setCounter((prevState) => prevState + 1);
             }}
           >
             x

@@ -10,6 +10,7 @@ const Orders = ({ user }) => {
       setOrderData(data);
     });
   }, []);
+  console.log(orderData);
   return (
     <div className="orders-section">
       <h2>My Ordered Items</h2>

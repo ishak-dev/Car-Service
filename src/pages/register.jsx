@@ -76,7 +76,7 @@ const Register = () => {
         />
         <input type="checkbox" className="terms" />
         <p className="terms">Remember me</p>
-        <button type="submit" onClick={() => addUser(formData)}>
+        <button type="submit" onClick={() => console.log(addUser(formData))}>
           <b>LOGIN</b>
         </button>
 

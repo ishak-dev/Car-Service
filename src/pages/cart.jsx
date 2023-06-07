@@ -10,21 +10,22 @@ const Cart = () => {
   const [articleData, setArticleData] = useState([]);
   const [articleDeleted, setArticleDeleted] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [counter, setCounter] = useState(0);
   const getCart = () => {
     setCart(localStorage.getItem("itemId"));
   };
 
   useEffect(() => {
     getCart();
-    articleDeleted && toast.info("You removed an item");
-  }, [articleDeleted]);
+    counter > 0 && toast.info("You removed an item");
+  }, [counter]);
 
   useEffect(() => {
     if (cart != null) {
       getPartById(cart).then((data) => setArticleData(data));
     }
   }, [cart]);
-  console.log(articleData);
+
   return (
     <div className="cart-section">
       <h2>My Cart</h2>
@@ -45,7 +46,7 @@ const Cart = () => {
               name={articleData.name}
               description={articleData.description}
               price={articleData.price}
-              setArticleDeleted={setArticleDeleted}
+              setCounter={setCounter}
               quantity={quantity}
               setQuantity={setQuantity}
             />
@@ -63,7 +64,14 @@ const Cart = () => {
       {cart ? (
         <button
           className="confirm-cart-btn"
-          onClick={() => postOrder(quantity)}
+          onClick={() => {
+            {
+              postOrder(quantity);
+              localStorage.removeItem("itemId");
+              setCounter((prevState) => prevState + 1);
+              toast.success("You successfully orderd an item");
+            }
+          }}
         >
           PURCHASE
         </button>

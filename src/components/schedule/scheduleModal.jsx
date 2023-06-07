@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-const ScheduleModal = ({ handleClose, show }) => {
+import { addServiceAppointment, getServiceTypes } from "../../api/api";
+const ScheduleModal = ({ handleClose, show, setCounter }) => {
+  const [types, setTypes] = useState([]);
+  const [option, setOption] = useState([]);
+  const [date, setDate] = useState([]);
+  const [description, setDescription] = useState([]);
+  const [hours, setHours] = useState([]);
+  useEffect(() => {
+    getServiceTypes().then((data) => setTypes(data));
+  }, []);
+
+  const handleClick = () => {
+    addServiceAppointment(option, date, description, hours);
+    setCounter((prevState) => prevState + 1);
+    handleClose();
+  };
+
+  const handleOption = (e) => {
+    setOption(e.target.selectedIndex + 1);
+  };
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  };
+  const handleHours = (e) => {
+    setHours(e.target.value);
+  };
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
+  };
   return (
     <Modal size="lg" show={show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
@@ -23,12 +51,24 @@ const ScheduleModal = ({ handleClose, show }) => {
             <label htmlFor="exampleFormControlSelect1">
               Select Service Type
             </label>
-            <select className="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              onChange={handleOption}
+            >
+              {types != [] &&
+                types.map((type) => <option>{type.serviceName}</option>)}
+            </select>
+            <select
+              className="form-control"
+              id="exampleFormControlSelect1"
+              onChange={handleHours}
+            >
+              <option>11:00</option>
+              <option>13:00</option>
+              <option>15:00</option>
+              <option>16:00</option>
+              <option>18:00</option>
             </select>
           </div>
           <div className="form-group">
@@ -36,7 +76,8 @@ const ScheduleModal = ({ handleClose, show }) => {
             <select
               multiple
               className="form-control"
-              id="exampleFormControlSelect2"
+              id="dateForm"
+              onChange={handleDate}
             >
               <option>12.06.2023</option>
               <option>13.06.2023</option>
@@ -55,6 +96,7 @@ const ScheduleModal = ({ handleClose, show }) => {
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
+              onChange={handleDescription}
             ></textarea>
           </div>
         </form>
@@ -66,7 +108,7 @@ const ScheduleModal = ({ handleClose, show }) => {
         <Button
           className="btn btn-light save"
           style={{ color: "white", backgroundColor: "#ff3100" }}
-          onClick={handleClose}
+          onClick={handleClick}
         >
           Save Changes
         </Button>

@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../style/pages/schedule.css";
 import ScheduleCard from "../components/schedule/scheduleCard";
 import { allUserServices } from "../api/api";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import ScheduleModal from "../components/schedule/scheduleModal";
 const Schedule = () => {
+  const [counter, setCounter] = useState(0);
   const [schedules, setSchedules] = useState([]);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -11,6 +16,9 @@ const Schedule = () => {
   useEffect(() => {
     allUserServices().then((data) => setSchedules(data));
   }, []);
+  useEffect(() => {
+    counter > 0 && toast.success("You scheduled an appointment");
+  }, [counter]);
   return (
     <div className="schedule-section">
       <h2>
@@ -25,29 +33,33 @@ const Schedule = () => {
         <li>Small Service</li>
       </div>
       <div className="appointment-cards">
-        {schedules.length > 1 ? (
-          schedules.map((schedule) => (
-            <ScheduleCard
-              date={schedule.serviceDate}
-              vehicleId={schedule.vehicleId}
-              serviceTypeId={schedule.serviceTypeId}
-            />
-          ))
-        ) : (
-          <ScheduleCard
-            date={schedules.servideDate}
-            vehicleId={schedules.vehicleId}
-            serviceTypeId={schedules.serviceTypeId}
-          />
-        )}
-        <ScheduleCard />
-        <ScheduleCard />
-        <ScheduleCard />
-        <ScheduleCard />
-        <ScheduleCard />
-        <ScheduleCard />
+        {schedules.length > 1
+          ? schedules.map((schedule) => (
+              <ScheduleCard
+                key={schedule.id}
+                date={schedule.ServiceDate}
+                vehicleId={schedule.VehicleId}
+                serviceTypeId={schedule.serviceTypeId}
+                description={schedule.description}
+                hours={schedule.hours}
+              />
+            ))
+          : schedules != [] && (
+              <ScheduleCard
+                date={schedules.ServideDate}
+                vehicleId={schedules.VehicleId}
+                serviceTypeId={schedules.serviceTypeId}
+                description={schedules.description}
+                hours={schedules.hours}
+              />
+            )}
       </div>
-      <ScheduleModal handleClose={handleClose} show={show} />
+      <ScheduleModal
+        handleClose={handleClose}
+        show={show}
+        setCounter={setCounter}
+      />
+      <ToastContainer theme="dark" autoClose={2000} />
     </div>
   );
 };
