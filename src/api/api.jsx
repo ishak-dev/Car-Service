@@ -5,7 +5,7 @@ let carServiceId = localStorage.getItem("user_car");
 export const getAllCustomers = () => {
   return axios
     .get("http://localhost/carservice-backend/rest/customer")
-    .then((res) => console.log(res));
+    .then((res) => res.data);
 };
 
 export const getAllVehicle = () => {
@@ -15,13 +15,10 @@ export const getAllVehicle = () => {
 };
 
 export const addUser = (data) => {
-  axios("http://localhost/carservice-backend/rest/customer", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data,
-  })
+  axios
+    .post("http://localhost/carservice-backend/rest/customer", {
+      ...data,
+    })
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
@@ -40,19 +37,31 @@ export const getPartById = (id) => {
 
 export const allUserOrders = () => {
   return axios
-    .get(`http://localhost/carservice-backend/rest/order/${id}`)
+    .get(`http://localhost/carservice-backend/rest/orders/${id}`)
     .then((response) => response.data);
 };
 
-export const allUserServices = () => {
-  return axios
-    .get(`http://localhost/carservice-backend/rest/service/${carServiceId}`)
+export const allUserServices = async () => {
+  return await axios
+    .get(
+      `http://localhost/carservice-backend/rest/serviceByUser/${carServiceId}`
+    )
     .then((response) => response.data);
 };
 
 export const getVehicleById = (id) => {};
 
-export const getServiceTypes = () => {};
+export const getServiceTypes = async () => {
+  return await axios
+    .get(`http://localhost/carservice-backend/rest/servicetype`)
+    .then((response) => response.data);
+};
+export const getServiceTypesById = async (id) => {
+  console.log(id);
+  return await axios
+    .get(`http://localhost/carservice-backend/rest/servicetype/${id}`)
+    .then((response) => response.data);
+};
 
 export const postOrder = (quantity) => {
   const today = new Date();
@@ -63,11 +72,14 @@ export const postOrder = (quantity) => {
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
 
-  const formattedToday = dd + "/" + mm + "/" + yyyy;
+  const formattedToday = yyyy + "-" + mm + "-" + dd;
   let data = {};
-  data.id = "2";
-
-  let stringifyData = JSON.stringify(data);
+  data.customer_id = id;
+  data.order_date = formattedToday;
+  data.quantity = quantity;
+  data.part_id = localStorage.getItem("itemId");
+  data.approved = "false";
+  // let stringifyData = JSON.stringify(data);
   axios
     .post("http://localhost/carservice-backend/rest/order", data)
     .then((res) => console.log(res))
@@ -90,4 +102,23 @@ export const updateOrder = async (id) => {
   return axios
     .post(`http://localhost/carservice-backend/rest/order_update/${id}`)
     .then((response) => response.data);
+};
+
+export const addServiceAppointment = async (
+  option,
+  date,
+  description,
+  hours
+) => {
+  let data = {};
+
+  data.vehicleID = carServiceId;
+  data.ServiceDate = date;
+  data.description = description;
+  data.serviceTypeId = option;
+  data.hours = hours;
+  console.log(data);
+  return await axios
+    .post("http://localhost/carservice-backend/rest/service", data)
+    .then((res) => res.data);
 };
