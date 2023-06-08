@@ -85,7 +85,7 @@ const Register = () => {
         </p>
         <div className="center">
           <p className="account-registration">
-            Don't have an account <Link to="#">REGISTER HERE</Link>
+            Have an account <Link to="/login">LOGIN</Link>
           </p>
         </div>
       </div>

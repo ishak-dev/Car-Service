@@ -36,18 +36,19 @@ const AdminDashboard = () => {
               <th>Approve</th>
             </tr>
           </thead>
-          {orders.map(
-            (order) =>
-              order.approved == "false" && (
-                <AdminOrder
-                  id={order.id}
-                  partId={order.part_id}
-                  customerId={order.customer_id}
-                  quantity={order.quantity}
-                  handleApprove={handleApprove}
-                />
-              )
-          )}
+          {orders != undefined &&
+            orders.map(
+              (order) =>
+                order.approved == "false" && (
+                  <AdminOrder
+                    id={order.id}
+                    partId={order.part_id}
+                    customerId={order.customer_id}
+                    quantity={order.quantity}
+                    handleApprove={handleApprove}
+                  />
+                )
+            )}
         </table>
         <h3 style={{ fontWeight: "bold", marginTop: "80px" }}>Users</h3>
         <table className="cart-item-table">

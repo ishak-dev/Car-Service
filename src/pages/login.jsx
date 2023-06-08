@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style/pages/login.css";
 import { Link } from "react-router-dom";
+import { login } from "../api/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  function handleChange(e) {
+    setFormData((prevData) => {
+      return { ...prevData, [e.target.name]: e.target.value };
+    });
+  }
   return (
     <div className="login-section">
       <div className="col-sm-5 left-side">
@@ -17,6 +31,7 @@ const Login = () => {
           type="email"
           name="email"
           placeholder="email"
+          onChange={handleChange}
         />
         <input
           className="login-input"
@@ -24,10 +39,14 @@ const Login = () => {
           type="password"
           name="password"
           placeholder="password"
+          onChange={handleChange}
         />
         <input type="checkbox" className="terms" />
         <p className="terms">Remember me</p>
-        <button type="submit">
+        <button
+          type="submit"
+          onClick={async () => toast.error(await login(formData))}
+        >
           <b>LOGIN</b>
         </button>
 
@@ -36,10 +55,11 @@ const Login = () => {
         </p>
         <div className="center">
           <p className="account-registration">
-            Don't have an account <Link to="#">REGISTER HERE</Link>
+            Don't have an account <Link to="/register">REGISTER HERE</Link>
           </p>
         </div>
       </div>
+      <ToastContainer theme="dark" autoClose={2000} />
     </div>
   );
 };
