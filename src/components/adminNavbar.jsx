@@ -20,6 +20,9 @@ const AdminNavbar = () => {
         <li>
           <Link to="/carshistory">Services</Link>
         </li>
+        <li onClick={() => (localStorage.clear(), window.location.reload())}>
+          Logout
+        </li>
         {/* <li>
           <Link to="/schedule">Schedule</Link>
         </li>

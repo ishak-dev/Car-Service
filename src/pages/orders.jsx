@@ -14,11 +14,7 @@ const Orders = ({ user }) => {
   return (
     <div className="orders-section">
       <h2>My Ordered Items</h2>
-      {orderData.length > 1 ? (
-        orderData.map((item) => <Order data={item} />)
-      ) : (
-        <Order data={orderData} />
-      )}
+      {orderData.length != 0 && orderData.map((item) => <Order data={item} />)}
     </div>
   );
 };

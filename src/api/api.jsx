@@ -61,7 +61,7 @@ export const getPartById = (id) => {
 
 export const allUserOrders = () => {
   return axios
-    .get(`http://localhost/carservice-backend/rest/orders/${id}`, {
+    .get(`http://localhost/carservice-backend/rest/orders/user`, {
       headers: {
         Authorization: token,
       },
@@ -86,7 +86,11 @@ export const getVehicleById = (id) => {};
 
 export const getServiceTypes = async () => {
   return await axios
-    .get(`http://localhost/carservice-backend/rest/servicetype`)
+    .get(`http://localhost/carservice-backend/rest/servicetype`, {
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((response) => response.data);
 };
 export const getServiceTypesById = async (id) => {
@@ -111,22 +115,18 @@ export const postOrder = (quantity) => {
 
   const formattedToday = yyyy + "-" + mm + "-" + dd;
   let data = {};
-  data.customer_id = id;
+
   data.order_date = formattedToday;
   data.quantity = quantity;
   data.part_id = localStorage.getItem("itemId");
   data.approved = "false";
   // let stringifyData = JSON.stringify(data);
   axios
-    .post(
-      "http://localhost/carservice-backend/rest/order",
-      {
-        headers: {
-          Authorization: token,
-        },
+    .post("http://localhost/carservice-backend/rest/order", data, {
+      headers: {
+        Authorization: token,
       },
-      data
-    )
+    })
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
@@ -153,11 +153,15 @@ export const getUserById = (id) => {
 
 export const updateOrder = async (id) => {
   return axios
-    .post(`http://localhost/carservice-backend/rest/order_update/${id}`, {
-      headers: {
-        Authorization: token,
-      },
-    })
+    .post(
+      `http://localhost/carservice-backend/rest/order_update/${id}`,
+      {},
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((response) => response.data);
 };
 

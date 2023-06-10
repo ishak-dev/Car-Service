@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Routes, Route, Link, Router, Navigate } from "react-router-dom";
@@ -21,8 +21,15 @@ import { useJwt } from "react-jwt";
 function App() {
   const [user, setUser] = useState("users");
   const token = localStorage.getItem("token");
+  const [userToken, setUserToken] = useState();
   const { decodedToken, isExpired } = useJwt(token);
-  console.log(decodedToken);
+
+  useEffect(() => {
+    if (decodedToken !== undefined && decodedToken != null) {
+      setUserToken(decodedToken);
+    }
+  }, [decodedToken]);
+
   return (
     <div className="App">
       {decodedToken != undefined && decodedToken.role == "admin" ? (
@@ -30,22 +37,43 @@ function App() {
       ) : (
         <Navbar />
       )}
+
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Home />} />
-        <Route path="/shop" element={<Shop user={user} />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/orders" element={<Orders user={user} />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/"
+          element={token == null ? <Navigate to={"/login"} /> : <Home />}
+        />
+        <Route
+          path="/dashboard"
+          element={token == null ? <Navigate to={"/login"} /> : <Home />}
+        />
+        <Route
+          path="/shop"
+          element={
+            token == null ? <Navigate to={"/login"} /> : <Shop user={user} />
+          }
+        />
+        <Route
+          path="/schedule"
+          element={token == null ? <Navigate to={"/login"} /> : <Schedule />}
+        />
+        <Route
+          path="/orders"
+          element={
+            token == null ? <Navigate to={"/login"} /> : <Orders user={user} />
+          }
+        />
+        <Route
+          path="/cart"
+          element={token == null ? <Navigate to={"/login"} /> : <Cart />}
+        />
         <Route
           path="/login"
           element={
-            decodedToken ? (
+            userToken ? (
               <Navigate
                 to={
-                  decodedToken.role == "admin"
-                    ? "/adminDashboard"
-                    : "/dashboard"
+                  userToken.role == "admin" ? "/adminDashboard" : "/dashboard"
                 }
               />
             ) : (
@@ -56,12 +84,10 @@ function App() {
         <Route
           path="/register"
           element={
-            decodedToken ? (
+            userToken ? (
               <Navigate
                 to={
-                  decodedToken.role == "admin"
-                    ? "/adminDashboard"
-                    : "/dashboard"
+                  userToken.role == "admin" ? "/adminDashboard" : "/dashboard"
                 }
               />
             ) : (
@@ -69,10 +95,26 @@ function App() {
             )
           }
         />
-        <Route path="/carshistory" element={<CarServiceHistory />} />
-        <Route path="/adminArticles" element={<AdminArticles />} />
-        <Route path="/adminDashboard" element={<AdminDashboard />} />
+        <Route
+          path="/carshistory"
+          element={
+            token == null ? <Navigate to={"/login"} /> : <CarServiceHistory />
+          }
+        />
+        <Route
+          path="/adminArticles"
+          element={
+            token == null ? <Navigate to={"/login"} /> : <AdminArticles />
+          }
+        />
+        <Route
+          path="/adminDashboard"
+          element={
+            userToken == null ? <Navigate to={"/login"} /> : <AdminDashboard />
+          }
+        />
       </Routes>
+
       <Footer />
     </div>
   );
