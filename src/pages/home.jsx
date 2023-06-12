@@ -4,12 +4,15 @@ import "../style/pages/home.css";
 import LastItem from "../components/home/lastItem";
 import MySchedule from "../components/home/mySchedule";
 import SpecialDealArticle from "../components/home/SpecialDealArticle";
-import { allParts } from "../api/api";
+import { allParts, allUserServices } from "../api/api";
+import Article from "../components/shop/article";
 const Home = () => {
   const [articleData, setArticleData] = useState([]);
   const [lastAddedItems, setLastAddedItems] = useState([]);
+  const [schedules, setSchedules] = useState([]);
   useEffect(() => {
     allParts().then((data) => setArticleData(data));
+    allUserServices().then((data) => setSchedules(data));
   }, []);
 
   useEffect(() => {
@@ -32,17 +35,28 @@ const Home = () => {
       </div>
       <h2>My Schedule</h2>
       <div className="schedule-container">
-        <MySchedule />
-        <MySchedule />
+        {schedules != [] &&
+          schedules.map((schedule) => (
+            <MySchedule
+              date={schedule.ServiceDate}
+              hours={schedule.hours}
+              description={schedule.description}
+            />
+          ))}
       </div>
-      <h2>Special Deals</h2>
+      <h2>Last in stock</h2>
       <div className="special-deals-container">
-        <SpecialDealArticle />
-        <SpecialDealArticle />
-        <SpecialDealArticle />
-        <SpecialDealArticle />
-        <SpecialDealArticle />
-        <SpecialDealArticle />
+        {articleData.map(
+          (article) =>
+            article.quantity < 4 && (
+              <Article
+                id={article.id}
+                name={article.name}
+                description={article.description}
+                price={article.price}
+              />
+            )
+        )}
       </div>
     </div>
   );
