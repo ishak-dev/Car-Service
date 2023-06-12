@@ -49,6 +49,16 @@ export const allParts = () => {
     .then((response) => response.data);
 };
 
+export const addPart = async (data) => {
+  return await axios
+    .post("http://localhost/carservice-backend/rest/part", data, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((response) => response.data);
+};
+
 export const getPartById = (id) => {
   return axios
     .get(`http://localhost/carservice-backend/rest/part/${id}`, {
@@ -71,18 +81,34 @@ export const allUserOrders = () => {
 
 export const allUserServices = async () => {
   return await axios
-    .get(
-      `http://localhost/carservice-backend/rest/serviceByUser/${carServiceId}`,
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    )
+    .get(`http://localhost/carservice-backend/rest/serviceByUser`, {
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((response) => response.data);
 };
 
-export const getVehicleById = (id) => {};
+export const getVehicleById = async () => {
+  return await axios
+    .get(`http://localhost/carservice-backend/rest/getVehicle`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((response) => response.data);
+};
+
+export const addVehicle = async (data) => {
+  axios
+    .post("http://localhost/carservice-backend/rest/addVehicle", data, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
 
 export const getServiceTypes = async () => {
   return await axios
@@ -172,23 +198,17 @@ export const addServiceAppointment = async (
   hours
 ) => {
   let data = {};
-
-  data.vehicleID = carServiceId;
   data.ServiceDate = date;
   data.description = description;
   data.serviceTypeId = option;
   data.hours = hours;
   console.log(data);
   return await axios
-    .post(
-      "http://localhost/carservice-backend/rest/service",
-      {
-        headers: {
-          Authorization: token,
-        },
+    .post("http://localhost/carservice-backend/rest/service", data, {
+      headers: {
+        Authorization: token,
       },
-      data
-    )
+    })
     .then((res) => res.data);
 };
 
