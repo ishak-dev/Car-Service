@@ -13,7 +13,7 @@ const Order = ({ data }) => {
   return (
     <details className="order-container">
       <summary>
-        {data.order_date} <span>Total Price: 300 $</span>
+        {data.order_date} {/* <span>Total Price: 300 $</span> */}
         {user == "admin" ? (
           <button className="confirm-cart-btn remove-float">
             Confirm order
