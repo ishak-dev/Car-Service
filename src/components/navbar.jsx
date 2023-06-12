@@ -26,6 +26,14 @@ const Navbar = () => {
         <li>
           <Link to="/cart">Cart</Link>
         </li>
+        <li
+          onClick={() => {
+            localStorage.clear();
+            window.location.reload();
+          }}
+        >
+          Logout
+        </li>
         <li>
           <div className="search-input">
             <input placeholder="Search for parts..." />
