@@ -1,17 +1,12 @@
 import React from "react";
 import "../../style/components/home/myschedule.css";
-const MySchedule = () => {
+const MySchedule = ({ date, hours, description }) => {
   return (
     <div className="schedule-tab">
-      <h5>17.05.2023</h5>
+      <h5>{date}</h5>
       <div className="schedule-info">
-        <p>
-          JHsd nasdj nasjdn kajsndkl asjkdh abdbl asdb alsdbk asbdhkb ashdb ajsb
-          kb asdbk JHsd nasdj nasjdn kajsndkl asjkdh abdbl asdb alsdbk asbdhkb
-          ashdb ajsb kb asdbk JHsd nasdj nasjdn kajsndkl asjkdh abdbl asdb
-          alsdbk asbdhkb ashdb ajsb kb asdbk
-        </p>
-        <p className="schedule-time">14:00</p>
+        <p>{description}</p>
+        <p className="schedule-time">{hours}</p>
       </div>
     </div>
   );
