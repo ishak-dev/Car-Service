@@ -245,7 +245,10 @@ export const addServiceAppointment = async (
 
 export const login = async (data) => {
   return await axios
-    .post(`http://localhost/carservice-backend/rest/userLogin`, data)
+    .post(
+      `http://carserviceburch.great-site.net/carservice-backend/rest/userLogin`,
+      data
+    )
     .then((response) => {
       localStorage.setItem("token", response.data.token),
         window.location.reload();
