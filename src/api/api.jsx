@@ -4,11 +4,14 @@ let id = localStorage.getItem("id");
 let carServiceId = localStorage.getItem("user_car");
 export const getAllCustomers = () => {
   return axios
-    .get("http://localhost/carservice-backend/rest/customer", {
-      headers: {
-        Authorization: token,
-      },
-    })
+    .get(
+      "http://carserviceburch.great-site.net/carservice-backend/rest/customer",
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
     .then((res) => res.data);
 };
 
@@ -58,6 +61,15 @@ export const addPart = async (data) => {
     })
     .then((response) => response.data);
 };
+export const updatePart = async (data, id) => {
+  return await axios
+    .put(`http://localhost/carservice-backend/rest/part/${id}`, data, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((response) => response.data);
+};
 
 export const getPartById = (id) => {
   return axios
@@ -89,6 +101,25 @@ export const allUserServices = async () => {
     .then((response) => response.data);
 };
 
+export const allServices = async () => {
+  return await axios
+    .get(`http://localhost/carservice-backend/rest/service`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((response) => response.data);
+};
+
+export const getVehicleByCarId = async (id) => {
+  return await axios
+    .get(`http://localhost/carservice-backend/rest/vehicle/${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+    .then((response) => response.data);
+};
 export const getVehicleById = async () => {
   return await axios
     .get(`http://localhost/carservice-backend/rest/getVehicle`, {

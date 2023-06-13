@@ -1,19 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { addPart } from "../../../api/api";
-const AdminArticleModal = ({ handleClose, show }) => {
+import { addPart, updatePart } from "../../../api/api";
+const AdminArticleModal = ({
+  handleClose,
+  show,
+  id,
+  img,
+  name,
+  price,
+  quantity,
+  description,
+  setCounter,
+}) => {
   const [data, setData] = useState({
-    name: "",
-    price: "",
-    description: "",
-    photo_link: "",
-    quantity: "",
+    name: name,
+    price: price,
+    description: description,
+    photo_link: img,
+    quantity: quantity,
   });
 
   const handleClick = () => {
     addPart(data);
     handleClose();
+    setCounter((prevData) => prevData + 1);
+  };
+
+  const handleClick2 = () => {
+    updatePart(data, id);
+    handleClose();
+    setCounter((prevData) => prevData + 1);
   };
 
   const handleOption = (e) => {
@@ -25,61 +42,66 @@ const AdminArticleModal = ({ handleClose, show }) => {
   return (
     <Modal size="lg" show={show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Add your appointment</Modal.Title>
+        <Modal.Title>Edit or Add article #{id}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleFormControlInput1">Name</label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder=""
+              defaultValue={name}
               name="name"
               onChange={handleOption}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleFormControlInput1">Description</label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder=""
+              defaultValue={description}
               name="description"
               onChange={handleOption}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleFormControlInput1">Price</label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder=""
+              defaultValue={price}
               name="price"
               onChange={handleOption}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleFormControlInput1">Photo Link</label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder=""
+              defaultValue={img}
               name="photo_link"
               onChange={handleOption}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="exampleFormControlInput1">Quantity</label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="exampleFormControlInput1"
               placeholder=""
+              defaultValue={quantity}
               name="quantity"
               onChange={handleOption}
             />
@@ -93,7 +115,7 @@ const AdminArticleModal = ({ handleClose, show }) => {
         <Button
           className="btn btn-light save"
           style={{ color: "white", backgroundColor: "#ff3100" }}
-          onClick={handleClick}
+          onClick={id ? handleClick2 : handleClick}
         >
           Save Changes
         </Button>

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../style/pages/carServiceHistory.css";
 import CarService from "../components/carServiceHistory/carService";
+import { allServices } from "../api/api";
 
 const CarServiceHistory = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    allServices().then((data) => setServices(data));
+  }, []);
+  console.log(services);
   return (
     <div className="carServiceHistory-section">
       <h2>
@@ -16,10 +23,15 @@ const CarServiceHistory = () => {
         <button className="search-btn">Search</button>
       </div>
       <div className="carservicehistory-notes">
-        <CarService />
-        <CarService />
-        <CarService />
-        <CarService />
+        {services.map((service) => (
+          <CarService
+            vehicleId={service.VehicleID}
+            serviceDate={service.ServiceDate}
+            serviceTypeId={service.serviceTypeId}
+            description={service.description}
+            hours={service.hours}
+          />
+        ))}
       </div>
     </div>
   );

@@ -1,31 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../style/components/carServiceHistory/carService.css";
-const CarService = ({ date, vehicleId, serviceTypeId }) => {
+import { getServiceTypesById, getVehicleByCarId } from "../../api/api";
+const CarService = ({
+  vehicleId,
+  serviceTypeId,
+  description,
+  serviceDate,
+  hours,
+}) => {
+  const [vehicle, setVehicle] = useState();
+  const [serviceType, setServiceType] = useState();
+  useEffect(() => {
+    getVehicleByCarId(vehicleId).then((data) => setVehicle(data));
+    getServiceTypesById(serviceTypeId).then((data) => setServiceType(data));
+  }, []);
+  console.log(vehicleId);
   return (
     <div className="carservice-container">
-      <h3>3123142151</h3>
+      <h3>{vehicle && vehicle.LicensePlate}</h3>
       <hr />
       <p>
-        Car Brand: <span>Mercedes</span>
+        Date: <span>{serviceDate}</span>
       </p>
       <p>
-        Car Model: <span>CLS</span>
+        Time:
+        <span> {hours}h</span>
+      </p>
+
+      <p>
+        Car Brand: <span>{vehicle && vehicle.Make}</span>
       </p>
       <p>
-        Car Year: <span>2001</span>
+        Car Model: <span>{vehicle && vehicle.Model}</span>
       </p>
       <p>
-        Car Kilometers: <span>190000</span>
+        Car Year: <span>{vehicle && vehicle.Year}</span>
       </p>
       <p>
-        Car Brand: <span>Mercedes</span>
+        Service Type: <span>{serviceType && serviceType.serviceName}</span>
       </p>
+
       <p className="car-repairs">Car repairs:</p>
-      <p>
-        In this car we repair following: doors, windows, engine, lights doors,
-        windows, engine, lights doors, windows, engine, lights doors, windows,
-        engine, lights doors, windows, engine, lights
-      </p>
+      <p>{description}</p>
     </div>
   );
 };

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import AdminArticleModal from "./adminArticleModal";
 
-const AdminArticle = ({ id, img, name, price, quantity }) => {
+const AdminArticle = ({
+  id,
+  img,
+  name,
+  price,
+  quantity,
+  description,
+  setCounter,
+}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
   };
+
   const handleShow = () => setShow(true);
   return (
     <tbody>
@@ -38,7 +47,17 @@ const AdminArticle = ({ id, img, name, price, quantity }) => {
           </button>
         </td>
       </tr>
-      <AdminArticleModal handleClose={handleClose} show={show} />
+      <AdminArticleModal
+        handleClose={handleClose}
+        show={show}
+        id={id}
+        img={img}
+        name={name}
+        price={price}
+        quantity={quantity}
+        description={description}
+        setCounter={setCounter}
+      />
     </tbody>
   );
 };

@@ -2,16 +2,21 @@ import React, { useEffect, useState } from "react";
 import AdminArticle from "../components/admin/adminArticles/article";
 import { allParts } from "../api/api";
 import AdminArticleModal from "../components/admin/adminArticles/adminArticleModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const AdminArticles = () => {
   const [articles, setArticles] = useState("");
   const [show, setShow] = useState(false);
+  const [counter, setCounter] = useState(0);
   const handleClose = () => {
     setShow(false);
   };
   const handleShow = () => setShow(true);
+
   useEffect(() => {
+    if (counter > 0) toast.success("Successfull");
     allParts().then((data) => setArticles(data));
-  }, []);
+  }, [counter]);
   return (
     <div className="cart-section">
       <h2>Articles</h2>
@@ -45,11 +50,18 @@ const AdminArticles = () => {
                 name={article.name}
                 price={article.price}
                 quantity={article.quantity}
+                description={article.description}
+                setCounter={setCounter}
               />
             ))}
         </table>
       </div>
-      <AdminArticleModal handleClose={handleClose} show={show} />
+      <AdminArticleModal
+        handleClose={handleClose}
+        show={show}
+        setCounter={setCounter}
+      />
+      <ToastContainer theme="dark" autoClose={2000} />
     </div>
   );
 };
