@@ -5,7 +5,7 @@ let carServiceId = localStorage.getItem("user_car");
 export const getAllCustomers = () => {
   return axios
     .get(
-      "http://carserviceburch.great-site.net/carservice-backend/rest/customer",
+      "https://flight-carservice.onrender.com/rest/customer",
       {
         headers: {
           Authorization: token,
@@ -17,7 +17,7 @@ export const getAllCustomers = () => {
 
 export const getAllVehicle = () => {
   return axios
-    .get("http://localhost/carservice-backend/rest/vehicle", {
+    .get("https://flight-carservice.onrender.com/rest/vehicle", {
       headers: {
         Authorization: token,
       },
@@ -246,7 +246,7 @@ export const addServiceAppointment = async (
 export const login = async (data) => {
   return await axios
     .post(
-      `http://carserviceburch.great-site.net/carservice-backend/rest/userLogin`,
+      `https://flight-carservice.onrender.com/rest/userLogin`,
       data
     )
     .then((response) => {
