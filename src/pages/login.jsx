@@ -12,6 +12,7 @@ const Login = () => {
   });
 
   function handleChange(e) {
+    
     setFormData((prevData) => {
       return { ...prevData, [e.target.name]: e.target.value };
     });
@@ -44,7 +45,7 @@ const Login = () => {
         <input type="checkbox" className="terms" />
         <p className="terms">Remember me</p>
         <button
-          type="submit"
+          type="button"
           onClick={async () => toast.error(await login(formData))}
         >
           <b>LOGIN</b>

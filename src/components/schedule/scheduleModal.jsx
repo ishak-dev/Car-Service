@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { addServiceAppointment, getServiceTypes } from "../../api/api";
 const ScheduleModal = ({ handleClose, show, setCounter }) => {
-  const [types, setTypes] = useState([]);
+  const [types, setTypes] = useState();
   const [option, setOption] = useState([]);
   const [date, setDate] = useState([]);
   const [description, setDescription] = useState([]);
@@ -56,7 +56,7 @@ const ScheduleModal = ({ handleClose, show, setCounter }) => {
               id="exampleFormControlSelect1"
               onChange={handleOption}
             >
-              {types != [] &&
+              {types &&
                 types.map((type) => <option>{type.serviceName}</option>)}
             </select>
             <select

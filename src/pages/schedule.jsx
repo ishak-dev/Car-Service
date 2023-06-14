@@ -10,10 +10,10 @@ import ScheduleModal from "../components/schedule/scheduleModal";
 import CarModal from "../components/schedule/carModal";
 const Schedule = () => {
   const [counter, setCounter] = useState(0);
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState();
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
-  const [vehicle, setVehicle] = useState("");
+  const [vehicle, setVehicle] = useState();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleClose2 = () => setShow2(false);
@@ -42,7 +42,7 @@ const Schedule = () => {
         )}
       </h2>
       <div className="card-colors">
-        {vehicle != "" && (
+        {vehicle  && (
           <>
             <li>{vehicle.Make}</li>
             <li>{vehicle.Model}</li>
@@ -51,7 +51,7 @@ const Schedule = () => {
         )}
       </div>
       <div className="appointment-cards">
-        {schedules.length != [] ? (
+        {schedules ? (
           schedules.map((schedule) => (
             <ScheduleCard
               key={schedule.id}

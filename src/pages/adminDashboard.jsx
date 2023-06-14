@@ -6,8 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import User from "../components/admin/adminDashboard/user";
 const AdminDashboard = () => {
-  const [orders, setOrders] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [orders, setOrders] = useState();
+  const [users, setUsers] = useState();
   const [deleted, setDeleted] = useState(0);
 
   const handleApprove = () => {
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
               <th>Approve</th>
             </tr>
           </thead>
-          {orders != undefined &&
+          {orders &&
             orders.map(
               (order) =>
                 order.approved == "false" && (
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
               <th>Address</th>
             </tr>
           </thead>
-          {users.map((user) => (
+          {users && users.map((user) => (
             <User
               id={user.id}
               firstName={user.FirstName}
