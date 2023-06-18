@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { addUser } from "../api/api";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     FirstName: "",
     LastName: "",
@@ -10,6 +13,7 @@ const Register = () => {
     Phone: "",
     Address: "",
   });
+  
 
   function handleChange(e) {
     setFormData((prevData) => {
@@ -76,8 +80,23 @@ const Register = () => {
         />
         <input type="checkbox" className="terms" />
         <p className="terms">Remember me</p>
-        <button type="submit" onClick={() => console.log(addUser(formData))}>
-          <b>LOGIN</b>
+        <button
+          type="submit"
+          onClick={() =>
+            addUser(formData)
+              .then((res) => {
+                // Redirect to "/login" after adding the user
+                
+                res.status == 200 &&
+                navigate('/login');
+              })
+              .catch((error) => {
+                // Handle any errors that occurred during adding the user
+                console.error(error);
+              })
+          }
+        >
+          <b>REGISTER</b>
         </button>
 
         <p className="forget-password">

@@ -13,7 +13,7 @@ const Article = ({ id, name, description, price, img }) => {
       <div className="special">
         <div className="img-container">
           <img
-            src="https://live.staticflickr.com/65535/52157944359_68e75a2e2b_m.jpg"
+            src={img}
             className="card-img-top"
             alt="..."
             onClick={handleShow}
@@ -36,6 +36,7 @@ const Article = ({ id, name, description, price, img }) => {
         description={description}
         price={price}
         id={id}
+        img={img}
       />
     </div>
   );

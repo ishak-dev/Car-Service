@@ -9,12 +9,12 @@ import Article from "../components/shop/article";
 const Home = () => {
   const [articleData, setArticleData] = useState([]);
   const [lastAddedItems, setLastAddedItems] = useState([]);
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState();
   useEffect(() => {
     allParts().then((data) => setArticleData(data));
     allUserServices().then((data) => setSchedules(data));
   }, []);
-
+console.log(schedules)
   useEffect(() => {
     const dataArray = [];
     if (articleData.length != 0) {
@@ -30,12 +30,12 @@ const Home = () => {
       <h2>Last Added</h2>
       <div className="last-added">
         {lastAddedItems.map((item) => (
-          <LastItem name={item.name} price={item.price} />
+          <LastItem name={item.name} price={item.price} quantity={item.quantity} img={item.photo_link}/>
         ))}
       </div>
       <h2>My Schedule</h2>
       <div className="schedule-container">
-        {schedules != [] &&
+        {schedules && schedules != undefined &&
           schedules.map((schedule) => (
             <MySchedule
               date={schedule.ServiceDate}
@@ -54,6 +54,7 @@ const Home = () => {
                 name={article.name}
                 description={article.description}
                 price={article.price}
+                img={article.photo_link}
               />
             )
         )}

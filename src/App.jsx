@@ -41,7 +41,10 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={token == null ? <Navigate to={"/login"} /> : <Home />}
+          element={token == null ? <Navigate to={"/login"} /> : decodedToken != undefined && decodedToken.role == "admin" ? (
+            <AdminDashboard />
+          ) : (
+            <Home />)}
         />
         <Route
           path="/dashboard"

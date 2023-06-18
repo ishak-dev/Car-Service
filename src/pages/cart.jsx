@@ -17,7 +17,7 @@ const Cart = () => {
 
   useEffect(() => {
     getCart();
-    counter > 0 && toast.info("You removed an item");
+    counter > 0 && toast.info("Successfully executed");
   }, [counter]);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const Cart = () => {
               postOrder(quantity);
               localStorage.removeItem("itemId");
               setCounter((prevState) => prevState + 1);
-              toast.success("You successfully orderd an item");
+              
             }
           }}
         >

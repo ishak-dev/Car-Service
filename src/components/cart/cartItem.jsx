@@ -15,7 +15,7 @@ const CartItem = ({
       <tr>
         <td className="item-cart-info">
           <img
-            src="https://live.staticflickr.com/65535/52157944359_68e75a2e2b_m.jpg"
+            src={img}
             className="cart-img"
             alt="..."
           />
@@ -49,6 +49,7 @@ const CartItem = ({
             onClick={() => {
               localStorage.removeItem("itemId"),
                 setCounter((prevState) => prevState + 1);
+                
             }}
           >
             x

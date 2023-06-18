@@ -24,11 +24,11 @@ export const getAllVehicle = () => {
 };
 
 export const addUser = (data) => {
-  axios
-    .post("https://flight-carservice.onrender.com/rest/addCustomer", {
+  return axios
+    .post("http://localhost/carservice-backend/rest/addCustomer", {
       ...data,
     })
-    .then((res) => console.log(res))
+    .then((res) => res)
     .catch((err) => console.log(err));
 };
 
@@ -88,7 +88,7 @@ export const allUserOrders = () => {
 
 export const allUserServices = async () => {
   return await axios
-    .get(`https://flight-carservice.onrender.com/rest/serviceByUser`, {
+    .get(`http://localhost/carservice-backend/rest/serviceByUser`, {
       headers: {
         Authorization: token,
       },

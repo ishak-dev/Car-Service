@@ -51,7 +51,7 @@ const Schedule = () => {
         )}
       </div>
       <div className="appointment-cards">
-        {schedules ? (
+        {schedules && schedules != undefined ? (
           schedules.map((schedule) => (
             <ScheduleCard
               key={schedule.id}

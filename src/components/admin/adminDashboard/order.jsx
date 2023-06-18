@@ -19,7 +19,7 @@ const AdminOrder = ({ id, partId, customerId, quantity, handleApprove }) => {
         <tr>
           <td className="item-cart-info">
             <img
-              src="https://live.staticflickr.com/65535/52157944359_68e75a2e2b_m.jpg"
+              src={article.photo_link}
               className="cart-img"
               alt="..."
             />

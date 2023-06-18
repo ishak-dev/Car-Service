@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const ArticleModal = ({ handleClose, show, name, description, price, id }) => {
+const ArticleModal = ({ handleClose, show, name, description, price, id,img }) => {
   const addToCart = () => {
     localStorage.setItem("itemId", id);
   };
@@ -22,7 +22,7 @@ const ArticleModal = ({ handleClose, show, name, description, price, id }) => {
           style={{ width: "fit-content", margin: "auto", marginBottom: "25px" }}
         >
           <img
-            src="https://live.staticflickr.com/65535/52157944359_68e75a2e2b_m.jpg"
+            src={img}
             alt="article picture"
             style={{ width: "100%" }}
           />
