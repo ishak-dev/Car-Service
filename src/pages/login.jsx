@@ -12,7 +12,6 @@ const Login = () => {
   });
 
   function handleChange(e) {
-    
     setFormData((prevData) => {
       return { ...prevData, [e.target.name]: e.target.value };
     });
@@ -43,7 +42,10 @@ const Login = () => {
           onChange={handleChange}
         />
         <input type="checkbox" className="terms" />
-        <p className="terms">Remember me</p>
+        <p className="terms">
+          For Admin login please use following email and pass
+          "johndoe@example.com 812483f"
+        </p>
         <button
           type="button"
           onClick={async () => toast.error(await login(formData))}
