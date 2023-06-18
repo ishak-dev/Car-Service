@@ -4,14 +4,11 @@ let id = localStorage.getItem("id");
 let carServiceId = localStorage.getItem("user_car");
 export const getAllCustomers = () => {
   return axios
-    .get(
-      "https://flight-carservice.onrender.com/rest/customer",
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    )
+    .get("https://flight-carservice.onrender.com/rest/customer", {
+      headers: {
+        Authorization: token,
+      },
+    })
     .then((res) => res.data);
 };
 
@@ -22,22 +19,15 @@ export const getAllVehicle = () => {
         Authorization: token,
       },
     })
-    .then((res) => console.log(res)).catch(err=>console.log(err));
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export const addUser = (data) => {
   axios
-    .post(
-      "https://flight-carservice.onrender.com/rest/customer",
-      {
-        headers: {
-          Authorization: token,
-        },
-      },
-      {
-        ...data,
-      }
-    )
+    .post("https://flight-carservice.onrender.com/rest/addCustomer", {
+      ...data,
+    })
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
@@ -49,7 +39,8 @@ export const allParts = () => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const addPart = async (data) => {
@@ -59,7 +50,8 @@ export const addPart = async (data) => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 export const updatePart = async (data, id) => {
   return await axios
@@ -68,7 +60,8 @@ export const updatePart = async (data, id) => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const getPartById = (id) => {
@@ -78,7 +71,8 @@ export const getPartById = (id) => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const allUserOrders = () => {
@@ -88,7 +82,8 @@ export const allUserOrders = () => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const allUserServices = async () => {
@@ -98,7 +93,8 @@ export const allUserServices = async () => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const allServices = async () => {
@@ -108,7 +104,8 @@ export const allServices = async () => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const getVehicleByCarId = async (id) => {
@@ -118,7 +115,8 @@ export const getVehicleByCarId = async (id) => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 export const getVehicleById = async () => {
   return await axios
@@ -127,7 +125,8 @@ export const getVehicleById = async () => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const addVehicle = async (data) => {
@@ -148,7 +147,8 @@ export const getServiceTypes = async () => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 export const getServiceTypesById = async (id) => {
   console.log(id);
@@ -158,7 +158,8 @@ export const getServiceTypesById = async (id) => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const postOrder = (quantity) => {
@@ -188,14 +189,15 @@ export const postOrder = (quantity) => {
     .catch((err) => console.log(err));
 };
 
-export const getAllOrders = async() => {
+export const getAllOrders = async () => {
   return await axios
     .get(`https://flight-carservice.onrender.com/rest/order`, {
       headers: {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const getUserById = (id) => {
@@ -205,7 +207,8 @@ export const getUserById = (id) => {
         Authorization: token,
       },
     })
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const updateOrder = async (id) => {
@@ -219,7 +222,8 @@ export const updateOrder = async (id) => {
         },
       }
     )
-    .then((response) => response.data).catch(err=>console.log(err));
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const addServiceAppointment = async (
@@ -240,18 +244,16 @@ export const addServiceAppointment = async (
         Authorization: token,
       },
     })
-    .then((res) => res.data).catch(err=>console.log(err));
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
 };
 
 export const login = async (data) => {
   return await axios
-    .post(
-      `https://flight-carservice.onrender.com/rest/userLogin`,
-      data
-    )
+    .post(`https://flight-carservice.onrender.com/rest/userLogin`, data)
     .then((response) => {
       localStorage.setItem("token", response.data.token),
-       console.log(response.data)
+        console.log(response.data);
       window.location.reload();
     })
     .catch((err) => console.log(err));
