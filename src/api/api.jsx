@@ -25,7 +25,7 @@ export const getAllVehicle = () => {
 
 export const addUser = (data) => {
   return axios
-    .post("http://localhost/carservice-backend/rest/addCustomer", {
+    .post("https://flight-carservice.onrender.com/rest/addCustomer", {
       ...data,
     })
     .then((res) => res)
